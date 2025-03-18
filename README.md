@@ -7,7 +7,7 @@ Install `node`.
     * Npm 9.6.7
 
 Quick start
-Clone repo: `git clone https://github.com/ianagpawa/react-webpack-app.git`
+Clone repo: `git clone https://github.com/ianagpawa/chatbotify-example`
 
 ### Setup
 Navigate to root of downloaded repo folder and run command `npm install`.
