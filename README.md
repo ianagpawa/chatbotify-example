@@ -14,3 +14,10 @@ Navigate to root of downloaded repo folder and run command `npm install`.
 
 ## Development server
 Run `npm run dev` to run app locally. Open browser with `http://localhost:5173/`.
+
+## Docker
+### Build
+Run `docker-compose up --build`.
+
+### Remoev
+Run `docker-compose down -v`
