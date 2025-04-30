@@ -9,7 +9,7 @@ const settings = {
         title: 'Chatty'
     },
     general: {
-        embedded: true,
+        embedded: false,
         showFooter: false
     },
     // chatHistory: {
