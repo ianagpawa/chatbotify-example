@@ -1,7 +1,9 @@
 export const Button = (props) => {
-    console.log('props', props);
     let {cbFunc, data} = props;
 
-    const getData = () => cbFunc(data);
+    const getData = (e) => {
+        // e.stopPropagation();
+        cbFunc(data);
+    };
     return <button onClick={getData}>HELP</button>
 }

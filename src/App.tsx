@@ -10,10 +10,10 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-   <div style={{ width: "50vw", height:" 50vh" }} >
-     <Grid />
+//    <div style={{ width: "50vw", height:" 50vh" }} >
+//      <Grid />
      <MyChatBot/>
-   </div>
+//    </div>
   )
 }
 

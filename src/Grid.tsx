@@ -4,6 +4,8 @@ import type { ColDef } from "ag-grid-community";
 import { AllCommunityModule, ModuleRegistry } from "ag-grid-community";
 import { AgGridReact } from "ag-grid-react";
 
+import { useChatWindow, usePaths } from "react-chatbotify";
+
 import {Button} from './Button';
 
 ModuleRegistry.registerModules([AllCommunityModule]);
@@ -18,7 +20,10 @@ interface IRow {
 }
 
 // Create new GridExample component
-export const Grid = () => {
+export const Grid = ({userDataHandler}) => {
+    const { toggleChatWindow } = useChatWindow();
+    const {goToPath } = usePaths();
+
   // Row Data: The data to be displayed.
   const [rowData, setRowData] = useState<IRow[]>([
     { id: "Tesla", model: "Model Y", price: 64950, date: true },
@@ -29,7 +34,12 @@ export const Grid = () => {
     { id: "Nissan", model: "Juke", price: 20675, date: false },
   ]);
   const callbackFunc = (params) => {
+    // params.stopPropagation();
     console.log('params', params);
+    userDataHandler(params);
+    goToPath('checkuser')
+    toggleChatWindow();
+    
   }
 
   // Column Definitions: Defines & controls grid columns.

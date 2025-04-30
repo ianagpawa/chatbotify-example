@@ -1,4 +1,7 @@
-import ChatBot from "react-chatbotify";
+import ChatBot, { ChatBotProvider } from "react-chatbotify";
+import { MyNestedComponent} from './NestComponent';
+import { Grid } from "./Grid";
+import { useState } from "react";
 
 
 const settings = {
@@ -67,6 +70,12 @@ type ServerResponse = {
 
 
 export const MyChatBot = () => {
+    const [userData, setUserData] = useState({});
+    const userDataHandler = (data) => {
+        setUserData(data);
+        console.log('got data from grid', data);
+        userId = 'emailsomething';
+    };
     async function fetchData(n) {
         try {
             const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${n}`)
@@ -124,9 +133,9 @@ export const MyChatBot = () => {
         },
         checkuser: {
             message: async (params) => {
-                userId = params.userInput;
+                // userId = params.userInput;
                 // const result = await fetchData(params.userInput);
-                cachedResponse = createErrMessage('Do you want to check for user issues?'); // DO you want to fix user issues?
+                cachedResponse = createErrMessage('Do you want to check for user issues?', userId); // DO you want to fix user issues?
                 return cachedResponse.message;
             },
             options: async (params) => {
@@ -196,6 +205,13 @@ export const MyChatBot = () => {
         }
     }
     return (
-        <ChatBot settings={settings} flow={flow} />
+        // <div style={{ width: "50vw", height:" 50vh" }} >
+            <ChatBotProvider>
+            <div style={{ width: "50vw", height:" 50vh" }} >
+                <Grid userDataHandler={userDataHandler}/>
+                </div>
+                <ChatBot settings={settings} flow={flow} />
+            </ChatBotProvider>
+        // {/* </div> */}
     );
 };
